@@ -54,13 +54,13 @@ namespace api.Controllers
 
                 if (i == 1) //if insert restaurant
                 {
-                    var testTuple = (StatusCode: 200, Message: "Restaurante inserido com sucesso");
+                    var testTuple = (StatusCode: 200, Message: "Restaurante criado com sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
                 }
                 else
                 {
-                    var testTuple2 = (StatusCode: 404, Message: "Restaurante inserido sem sucesso");
+                    var testTuple2 = (StatusCode: 404, Message: "Restaurante criado sem sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
                 }
@@ -72,7 +72,7 @@ namespace api.Controllers
                 return JsonConvert.SerializeObject(new { testTuple3.StatusCode, testTuple3.Message });
             }
 
-            var testTuple4 = (StatusCode: 404, Message: "Restaurante inserido sem sucesso");
+            var testTuple4 = (StatusCode: 404, Message: "Restaurante criado sem sucesso");
 
             return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
         }
@@ -118,13 +118,13 @@ namespace api.Controllers
 
                 if (i == 1) //if insert product
                 {
-                    var testTuple = (StatusCode: 200, Message: "Produto inserido com sucesso");
+                    var testTuple = (StatusCode: 200, Message: "Produto criado com sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
                 }
                 else
                 {
-                    var testTuple2 = (StatusCode: 404, Message: "Restaurante inserido sem sucesso");
+                    var testTuple2 = (StatusCode: 404, Message: "Restaurante criado sem sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
                 }
@@ -137,7 +137,7 @@ namespace api.Controllers
             }
 
 
-            var testTuple4 = (StatusCode: 404, Message: "Produto inserido sem sucesso");
+            var testTuple4 = (StatusCode: 404, Message: "Produto criado sem sucesso");
 
             return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
         }
@@ -179,13 +179,13 @@ namespace api.Controllers
 
                 if (i == 1) //if insert user
                 {
-                    var testTuple = (StatusCode: 200, Message: "Utilizador inserido com sucesso");
+                    var testTuple = (StatusCode: 200, Message: "Utilizador criado com sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
                 }
                 else
                 {
-                    var testTuple2 = (StatusCode: 404, Message: "Utilizador inserido sem sucesso");
+                    var testTuple2 = (StatusCode: 404, Message: "Utilizador criado sem sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
                 }
@@ -197,7 +197,7 @@ namespace api.Controllers
                 return JsonConvert.SerializeObject(new { testTuple3.StatusCode, testTuple3.Message });
             }
 
-            var testTuple4 = (StatusCode: 404, Message: "Utilizador inserido sem sucesso");
+            var testTuple4 = (StatusCode: 404, Message: "Utilizador criado sem sucesso");
 
             return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
         }
