@@ -21,15 +21,15 @@
  
    `name=[string]`
    `price=[decimal]`
+   `category=[string]`
+   `idRestaurant=[integer]`
    
    
    **Opcional:**
  
-   `category=[string]`
    `description=[string]`
    `image=[string]`
    `nStars=[integer]`
-   `idRestaurant=[integer]`
    `allergens=[string]`
    `mainIngredients=[string]`
    `nutritionalValue=[string]`
@@ -37,7 +37,7 @@
 * **Resposta de sucesso:**
 
   * **StatusCode:** 200 <br />
-    **Message:** `{ "Produto inserido com sucesso" }`
+    **Message:** `{ "Produto criado com sucesso" }`
  
 * **Resposta de erro:**
 
@@ -47,7 +47,7 @@
   OU
 
   * **StatusCode:** 404 <br />
-    **Message:** `{ "Produto inserido sem sucesso" }`
+    **Message:** `{ "Produto criado sem sucesso" }`
     
     
     
@@ -73,6 +73,7 @@
   **Obrigatório:**
  
    `name=[string]`
+   `address=[string]`
    
    
    **Opcional:**
@@ -87,7 +88,7 @@
 * **Resposta de sucesso:**
 
   * **StatusCode:** 200 <br />
-    **Message:** `{ "Restaurante inserido com sucesso" }`
+    **Message:** `{ "Restaurante criado com sucesso" }`
  
 * **Resposta de erro:**
 
@@ -97,4 +98,54 @@
   OU
 
   * **StatusCode:** 404 <br />
-    **Message:** `{ "Restaurante inserido sem sucesso" }`
+    **Message:** `{ "Restaurante criado sem sucesso" }`
+    
+    
+    
+    
+**Criar Utilizador**
+----
+  Insere dados de um utilizador em formato JSON. 
+  
+* **URL**
+
+  /insertUser
+
+* **Método:**
+
+  `POST`
+  
+*  **Parâmetros de URL**
+
+   Nenhum
+
+* **Parâmetros de dados**
+
+  **Obrigatório:**
+ 
+   `name=[string]`
+   `role=[string]`
+   `address=[string]`
+   `email=[string]`
+   `password=[string]`
+   `paypal=[string]`
+   
+   
+   **Opcional:**
+ 
+   `phoneNumber=[string]`
+
+* **Resposta de sucesso:**
+
+  * **StatusCode:** 200 <br />
+    **Message:** `{ "Utilizador criado com sucesso" }`
+ 
+* **Resposta de erro:**
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ motivo do erro }`
+
+  OU
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ "Utilizador criado sem sucesso" }`
