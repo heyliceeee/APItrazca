@@ -205,5 +205,63 @@ namespace api.Controllers
         #endregion
 
         #endregion
+
+
+        #region TABLE LOG
+
+        #region INSERT
+
+        [HttpPost]
+        [Route("insertLog")]
+
+        public string AddLog([FromBody] LogViewModel log)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = conn;
+                command.CommandText = string.Format(@"  INSERT INTO log (dateTime, idUser, type, titleLog, resume)
+                                                        VALUES (@dateTime, @idUser, @type, @titleLog, @resume)");
+
+                command.Parameters.AddWithValue("@dateTime", ((object)log.dateTime ?? DBNull.Value));
+                command.Parameters.AddWithValue("@idUser", ((object)log.idUser ?? DBNull.Value));
+                command.Parameters.AddWithValue("@type", ((object)log.type ?? DBNull.Value));
+                command.Parameters.AddWithValue("@titleLog", ((object)log.titleLog ?? DBNull.Value));
+                command.Parameters.AddWithValue("@resume", ((object)log.resume ?? DBNull.Value));
+
+                int i = command.ExecuteNonQuery();
+
+                conn.Close();
+
+                if (i == 1) //if insert log
+                {
+                    var testTuple = (StatusCode: 200, Message: "Log criada com sucesso");
+
+                    return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
+                }
+                else
+                {
+                    var testTuple2 = (StatusCode: 404, Message: "Log criada sem sucesso");
+
+                    return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                var testTuple3 = (StatusCode: 404, Message: ex.Message);
+
+                return JsonConvert.SerializeObject(new { testTuple3.StatusCode, testTuple3.Message });
+            }
+
+            var testTuple4 = (StatusCode: 404, Message: "Log criada sem sucesso");
+
+            return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
+        }
+
+        #endregion
+
+        #endregion
     }
 }
