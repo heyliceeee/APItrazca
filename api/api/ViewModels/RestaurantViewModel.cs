@@ -7,7 +7,7 @@ namespace api.ViewModels
 {
     public class RestaurantViewModel
     {
-        public int idRestaurant { get; set; }
+        public int? idRestaurant { get; set; }
         public string image { get; set; }
         public string name { get; set; }
         public int? nStars { get; set; }
@@ -15,6 +15,6 @@ namespace api.ViewModels
         public decimal? cheapPriceProduct { get; set; }
         public decimal? distanceUserAddress { get; set; }
         public string description { get; set; }
-
+        public string address { get; set; }
     }
 }
