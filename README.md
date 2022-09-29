@@ -1,7 +1,9 @@
 # API da app "Traz Cá"
-**Criar produto**
-----
-  Insere dados de um produto em formato JSON. 
+## Produto
+
+<details>
+  <summary>Criar</summary>
+  <pre> Insere dados de um produto em formato JSON. </pre>
   
 * **URL**
 
@@ -48,13 +50,14 @@
 
   * **StatusCode:** 404 <br />
     **Message:** `{ "Produto criado sem sucesso" }`
-    
-    
-    
-    
-**Criar restaurante**
-----
-  Insere dados de um restaurante em formato JSON. 
+</details>
+
+
+## Restaurante
+
+<details>
+  <summary>Criar</summary>
+  <pre> Insere dados de um restaurante em formato JSON. </pre>
   
 * **URL**
 
@@ -99,13 +102,16 @@
 
   * **StatusCode:** 404 <br />
     **Message:** `{ "Restaurante criado sem sucesso" }`
+</details>
+
+
+
+
+## Utilizador
     
-    
-    
-    
-**Criar Utilizador**
-----
-  Insere dados de um utilizador em formato JSON. 
+<details>
+  <summary>Criar</summary>
+  <pre> Insere dados de um utilizador em formato JSON. </pre>
   
 * **URL**
 
@@ -149,3 +155,4 @@
 
   * **StatusCode:** 404 <br />
     **Message:** `{ "Utilizador criado sem sucesso" }`
+</details>
