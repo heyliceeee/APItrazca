@@ -156,3 +156,52 @@
   * **StatusCode:** 404 <br />
     **Message:** `{ "Utilizador criado sem sucesso" }`
 </details>
+
+
+
+## Log
+    
+<details>
+  <summary>Criar</summary>
+  <pre> Insere dados de uma log em formato JSON. </pre>
+  
+* **URL**
+
+  /insertLog
+
+* **Método:**
+
+  `POST`
+  
+*  **Parâmetros de URL**
+
+   Nenhum
+
+* **Parâmetros de dados**
+
+  **Obrigatório:**
+ 
+   `dateTime=[dateTime]`
+   `idUser=[integer]`
+   `type=[string]`
+   `titleLog=[string]`
+   
+   **Opcional:**
+ 
+   `resume=[string]`
+
+* **Resposta de sucesso:**
+
+  * **StatusCode:** 200 <br />
+    **Message:** `{ "Log criada com sucesso" }`
+ 
+* **Resposta de erro:**
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ motivo do erro }`
+
+  OU
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ "Log criada sem sucesso" }`
+</details>
