@@ -13,5 +13,6 @@ namespace api.ViewModels
         public string type { get; set; }
         public string titleLog { get; set; }
         public string resume { get; set; }
+        public string status { get; set; }
     }
 }

@@ -36,8 +36,8 @@ namespace api.Controllers
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = conn;
-                command.CommandText = string.Format(@"  INSERT INTO restaurant (image, name, nStars, allCategories, cheapPriceProduct, distanceUserAddress, description, address)
-                                                        VALUES (@image, @name, @nStars, @allCategories, @cheapPriceProduct, @distanceUserAddress, @description, @address)");
+                command.CommandText = string.Format(@"  INSERT INTO restaurant (image, name, nStars, allCategories, cheapPriceProduct, distanceUserAddress, description, address, status)
+                                                        VALUES (@image, @name, @nStars, @allCategories, @cheapPriceProduct, @distanceUserAddress, @description, @address, 'inserted')");
 
                 command.Parameters.AddWithValue("@image", ((object)restaurant.image ?? DBNull.Value));
                 command.Parameters.AddWithValue("@name", ((object)restaurant.name ?? DBNull.Value));
@@ -98,8 +98,8 @@ namespace api.Controllers
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = conn;
-                command.CommandText = string.Format(@"  INSERT INTO product (category, name, description, image, price, nStars, idRestaurant, allergens, mainIngredients, nutritionalValue)
-                                                        VALUES (@category, @name, @description, @image, @price, @nStars, @idRestaurant, @allergens, @mainIngredients, @nutritionalValue)");
+                command.CommandText = string.Format(@"  INSERT INTO product (category, name, description, image, price, nStars, idRestaurant, allergens, mainIngredients, nutritionalValue, status)
+                                                        VALUES (@category, @name, @description, @image, @price, @nStars, @idRestaurant, @allergens, @mainIngredients, @nutritionalValue, 'inserted')");
 
                 command.Parameters.AddWithValue("@category", ((object)product.category ?? DBNull.Value));
                 command.Parameters.AddWithValue("@name", ((object)product.name ?? DBNull.Value));
@@ -162,8 +162,8 @@ namespace api.Controllers
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = conn;
-                command.CommandText = string.Format(@"  INSERT INTO [user] (role, name, address, email, password, phoneNumber, paypal)
-                                                        VALUES (@role, @name, @address, @email, @password, @phoneNumber, @paypal)");
+                command.CommandText = string.Format(@"  INSERT INTO [user] (role, name, address, email, password, phoneNumber, paypal, status)
+                                                        VALUES (@role, @name, @address, @email, @password, @phoneNumber, @paypal, 'inserted')");
 
                 command.Parameters.AddWithValue("@role", ((object)user.role ?? DBNull.Value));
                 command.Parameters.AddWithValue("@name", ((object)user.name ?? DBNull.Value));
@@ -222,8 +222,8 @@ namespace api.Controllers
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = conn;
-                command.CommandText = string.Format(@"  INSERT INTO log (dateTime, idUser, type, titleLog, resume)
-                                                        VALUES (@dateTime, @idUser, @type, @titleLog, @resume)");
+                command.CommandText = string.Format(@"  INSERT INTO log (dateTime, idUser, type, titleLog, resume, status)
+                                                        VALUES (@dateTime, @idUser, @type, @titleLog, @resume, 'inserted')");
 
                 command.Parameters.AddWithValue("@dateTime", ((object)log.dateTime ?? DBNull.Value));
                 command.Parameters.AddWithValue("@idUser", ((object)log.idUser ?? DBNull.Value));

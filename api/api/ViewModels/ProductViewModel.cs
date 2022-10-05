@@ -18,6 +18,7 @@ namespace api.ViewModels
         public string allergens { get; set; }
         public string mainIngredients { get; set; }
         public string nutritionalValue { get; set; }
-        
+        public string status { get; set; }
+
     }
 }

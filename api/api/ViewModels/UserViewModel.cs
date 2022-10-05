@@ -15,5 +15,6 @@ namespace api.ViewModels
         public string password { get; set; }
         public string phoneNumber { get; set; }
         public string paypal { get; set; }
+        public string status { get; set; }
     }
 }
