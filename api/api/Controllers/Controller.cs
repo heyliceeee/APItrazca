@@ -77,6 +77,59 @@ namespace api.Controllers
 
         #endregion
 
+        #region EDIT
+
+        [HttpPut]
+        [Route("editCart/{id}")]
+
+        public string EditCart(int id, [FromBody] CartViewModel cart)
+        {
+            try
+            {
+                var query = @"  UPDATE cart SET idUser = @idUser, subtotal = @subtotal, deliveryFee = @deliveryFee, discount = @discount, total = @total, status = 'edited'
+                                WHERE idCart = " + id + "";
+
+                SqlCommand command = new SqlCommand(query, conn);
+
+                command.Parameters.AddWithValue("@idUser", ((object)cart.idUser ?? DBNull.Value));
+                command.Parameters.AddWithValue("@subtotal", ((object)cart.subtotal ?? DBNull.Value));
+                command.Parameters.AddWithValue("@deliveryFee", ((object)cart.deliveryFee ?? DBNull.Value));
+                command.Parameters.AddWithValue("@discount", ((object)cart.discount ?? DBNull.Value));
+                command.Parameters.AddWithValue("@total", ((object)cart.total ?? DBNull.Value));
+
+                conn.Open();
+
+                int i = command.ExecuteNonQuery();
+
+                conn.Close();
+
+                if (i == 1) //if insert log
+                {
+                    var testTuple = (StatusCode: 200, Message: "Dados do carrinho atualizados com sucesso");
+
+                    return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
+                }
+                else
+                {
+                    var testTuple2 = (StatusCode: 404, Message: "Dados do carrinho não atualizados. Tente novamente.");
+
+                    return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                var testTuple3 = (StatusCode: 404, Message: ex.Message);
+
+                return JsonConvert.SerializeObject(new { testTuple3.StatusCode, testTuple3.Message });
+            }
+
+            var testTuple4 = (StatusCode: 404, Message: "Dados do carrinho não atualizados. Tente novamente.");
+
+            return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
+        }
+
+        #endregion
+
         #endregion
 
 
@@ -128,6 +181,59 @@ namespace api.Controllers
             }
 
             var testTuple4 = (StatusCode: 404, Message: "Item do carrinho criado sem sucesso");
+
+            return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
+        }
+
+        #endregion
+
+        #region EDIT
+
+        [HttpPut]
+        [Route("editCart/{id}")]
+
+        public string EditCart(int id, [FromBody] CartViewModel cart)
+        {
+            try
+            {
+                var query = @"  UPDATE cart SET idUser = @idUser, subtotal = @subtotal, deliveryFee = @deliveryFee, discount = @discount, total = @total, status = 'edited'
+                                WHERE idCart = " + id + "";
+
+                SqlCommand command = new SqlCommand(query, conn);
+
+                command.Parameters.AddWithValue("@idUser", ((object)cart.idUser ?? DBNull.Value));
+                command.Parameters.AddWithValue("@subtotal", ((object)cart.subtotal ?? DBNull.Value));
+                command.Parameters.AddWithValue("@deliveryFee", ((object)cart.deliveryFee ?? DBNull.Value));
+                command.Parameters.AddWithValue("@discount", ((object)cart.discount ?? DBNull.Value));
+                command.Parameters.AddWithValue("@total", ((object)cart.total ?? DBNull.Value));
+
+                conn.Open();
+
+                int i = command.ExecuteNonQuery();
+
+                conn.Close();
+
+                if (i == 1) //if insert log
+                {
+                    var testTuple = (StatusCode: 200, Message: "Dados do carrinho atualizados com sucesso");
+
+                    return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
+                }
+                else
+                {
+                    var testTuple2 = (StatusCode: 404, Message: "Dados do carrinho não atualizados. Tente novamente.");
+
+                    return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
+                }
+            }
+            catch (Exception ex)
+            {
+                var testTuple3 = (StatusCode: 404, Message: ex.Message);
+
+                return JsonConvert.SerializeObject(new { testTuple3.StatusCode, testTuple3.Message });
+            }
+
+            var testTuple4 = (StatusCode: 404, Message: "Dados do carrinho não atualizados. Tente novamente.");
 
             return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
         }
