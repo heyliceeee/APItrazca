@@ -86,7 +86,7 @@ namespace api.Controllers
         {
             try
             {
-                var query = @"  UPDATE cart SET idUser = @idUser, subtotal = @subtotal, deliveryFee = @deliveryFee, discount = @discount, total = @total, status = 'edited'
+                var query = @"  UPDATE cart SET idUser = @idUser, subtotal = @subtotal, deliveryFee = @deliveryFee, discount = @discount, total = @total, status = @status
                                 WHERE idCart = " + id + "";
 
                 SqlCommand command = new SqlCommand(query, conn);
@@ -96,6 +96,7 @@ namespace api.Controllers
                 command.Parameters.AddWithValue("@deliveryFee", ((object)cart.deliveryFee ?? DBNull.Value));
                 command.Parameters.AddWithValue("@discount", ((object)cart.discount ?? DBNull.Value));
                 command.Parameters.AddWithValue("@total", ((object)cart.total ?? DBNull.Value));
+                command.Parameters.AddWithValue("@status", ((object)cart.status ?? DBNull.Value));
 
                 conn.Open();
 
@@ -190,22 +191,22 @@ namespace api.Controllers
         #region EDIT
 
         [HttpPut]
-        [Route("editCart/{id}")]
+        [Route("editCartItem/{id}")]
 
-        public string EditCart(int id, [FromBody] CartViewModel cart)
+        public string EditCartItem(int id, [FromBody] CartItemViewModel cartItem)
         {
             try
             {
-                var query = @"  UPDATE cart SET idUser = @idUser, subtotal = @subtotal, deliveryFee = @deliveryFee, discount = @discount, total = @total, status = 'edited'
-                                WHERE idCart = " + id + "";
+                var query = @"  UPDATE cartItem SET idCart = @idCart, idProduct = @idProduct, quantity = @quantity, noteProduct = @noteProduct, status = @status
+                                WHERE idCardItem = " + id + "";
 
                 SqlCommand command = new SqlCommand(query, conn);
 
-                command.Parameters.AddWithValue("@idUser", ((object)cart.idUser ?? DBNull.Value));
-                command.Parameters.AddWithValue("@subtotal", ((object)cart.subtotal ?? DBNull.Value));
-                command.Parameters.AddWithValue("@deliveryFee", ((object)cart.deliveryFee ?? DBNull.Value));
-                command.Parameters.AddWithValue("@discount", ((object)cart.discount ?? DBNull.Value));
-                command.Parameters.AddWithValue("@total", ((object)cart.total ?? DBNull.Value));
+                command.Parameters.AddWithValue("@idCart", ((object)cartItem.idCart ?? DBNull.Value));
+                command.Parameters.AddWithValue("@idProduct", ((object)cartItem.idProduct ?? DBNull.Value));
+                command.Parameters.AddWithValue("@quantity", ((object)cartItem.quantity ?? DBNull.Value));
+                command.Parameters.AddWithValue("@noteProduct", ((object)cartItem.noteProduct ?? DBNull.Value));
+                command.Parameters.AddWithValue("@status", ((object)cartItem.status ?? DBNull.Value));
 
                 conn.Open();
 
@@ -215,13 +216,13 @@ namespace api.Controllers
 
                 if (i == 1) //if insert log
                 {
-                    var testTuple = (StatusCode: 200, Message: "Dados do carrinho atualizados com sucesso");
+                    var testTuple = (StatusCode: 200, Message: "Dados do item do carrinho atualizados com sucesso");
 
                     return JsonConvert.SerializeObject(new { testTuple.StatusCode, testTuple.Message });
                 }
                 else
                 {
-                    var testTuple2 = (StatusCode: 404, Message: "Dados do carrinho não atualizados. Tente novamente.");
+                    var testTuple2 = (StatusCode: 404, Message: "Dados do item do carrinho não atualizados. Tente novamente.");
 
                     return JsonConvert.SerializeObject(new { testTuple2.StatusCode, testTuple2.Message });
                 }
@@ -233,7 +234,7 @@ namespace api.Controllers
                 return JsonConvert.SerializeObject(new { testTuple3.StatusCode, testTuple3.Message });
             }
 
-            var testTuple4 = (StatusCode: 404, Message: "Dados do carrinho não atualizados. Tente novamente.");
+            var testTuple4 = (StatusCode: 404, Message: "Dados do item do carrinho não atualizados. Tente novamente.");
 
             return JsonConvert.SerializeObject(new { testTuple4.StatusCode, testTuple4.Message });
         }
