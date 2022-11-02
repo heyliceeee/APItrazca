@@ -139,6 +139,52 @@
     **Message:** `{ "Carrinho criado sem sucesso" }`
 </details>
 
+<details>
+  <summary>Editar</summary>
+  <pre> Edita dados de um carrinho em formato JSON. </pre>
+  
+* **URL**
+
+  /editCart/{id}
+
+* **Método:**
+
+  `PUT`
+  
+*  **Parâmetros de URL**
+
+   id
+
+* **Parâmetros de dados**
+
+  **Obrigatório:**
+  
+   `status=[string]`
+
+  **Opcional:**
+ 
+   `subtotal=[decimal]`
+   `deliveryFee=[decimal]`
+   `discount=[decimal]`
+   `total=[decimal]`
+   `idUser=[integer]`
+
+* **Resposta de sucesso:**
+
+  * **StatusCode:** 200 <br />
+    **Message:** `{ "Dados do carrinho atualizados com sucesso" }`
+ 
+* **Resposta de erro:**
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ motivo do erro }`
+
+  OU
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ "Dados do carrinho atualizados sem sucesso" }`
+</details>
+
 
 ## Item do Carrinho
 
@@ -185,6 +231,52 @@
 
   * **StatusCode:** 404 <br />
     **Message:** `{ "Item do carrinho criado sem sucesso" }`
+</details>
+
+
+<details>
+  <summary>Editar</summary>
+  <pre> Edita dados de um item do carrinho em formato JSON. </pre>
+  
+* **URL**
+
+  /editCartItem/{id}
+
+* **Método:**
+
+  `PUT`
+  
+*  **Parâmetros de URL**
+
+   id
+
+* **Parâmetros de dados**
+
+  **Obrigatório:**
+  
+   `status=[string]`
+
+  **Opcional:**
+ 
+   `idCart=[integer]`
+   `idProduct=[integer]`
+   `quantity=[integer]`
+   `noteProduct=[string]`
+
+* **Resposta de sucesso:**
+
+  * **StatusCode:** 200 <br />
+    **Message:** `{ "Dados do item do carrinho atualizados com sucesso" }`
+ 
+* **Resposta de erro:**
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ motivo do erro }`
+
+  OU
+
+  * **StatusCode:** 404 <br />
+    **Message:** `{ "Dados do item do carrinho atualizados sem sucesso" }`
 </details>
 
 
