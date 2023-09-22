@@ -150,6 +150,7 @@
 
 ```json
 {
+    "status": "updated",
     "subtotal": 8.99,
     "deliveryFee": 2.00,
     "discount": 0.00,
@@ -179,191 +180,171 @@
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um item do carrinho em formato JSON. </pre>
+  <pre> Criar um item no carrinho. </pre>
+
+  **[POST]** `{{host}}/insertCartItem`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `quantity`     | integer  | Quantidade do item.         |     Sim     |
+| `idProduct`     | integer  | ID do produto do item.         |     Sim     |
+| `idCart`     | integer  | ID do carrinho do item.         |     Sim     |
+| `noteProduct`     | string  | Nota do produto do item.       |     Não     |
 
-  /insertCartItem
+```json
+{
+    "quantity": 2,
+    "idProduct": 1,
+    "idCart": 1,
+    "noteProduct": "Extra queijo e sem alface"
+}
+```
+**Response**
 
-* **Método:**
+201 Created
+```json
+{
+    "Item do carrinho criado com sucesso"
+}
+```
 
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `quantity=[integer]`
-   `idProduct=[integer]`
-   `idCart=[integer]`
-   
-   
-   **Opcional:**
- 
-   `noteProduct=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Item do carrinho criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Item do carrinho criado sem sucesso" }`
+404 Error
+```json
+{
+    "Item do carrinho criado sem sucesso"
+}
+```
 </details>
 
 
 <details>
   <summary>Editar</summary>
-  <pre> Edita dados de um item do carrinho em formato JSON. </pre>
+  <pre> Editar um item no carrinho. </pre>
+
+  **[PUT]** `{{host}}/editCartItem/{id}`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `status`     | string  | Estado do item.         |     Sim     |
+| `quantity`     | integer  | Quantidade do item.         |     Não     |
+| `idProduct`     | integer  | ID do produto do item.         |     Não     |
+| `idCart`     | integer  | ID do carrinho do item.         |     Não     |
+| `noteProduct`     | string  | Nota do produto do item.       |     Não     |
 
-  /editCartItem/{id}
+```json
+{
+    "status": "updated",
+    "quantity": 2,
+    "idProduct": 1,
+    "idCart": 1,
+    "noteProduct": "Extra queijo e sem alface"
+}
+```
+**Response**
 
-* **Método:**
+200 Updated
+```json
+{
+    "Dados do item do carrinho atualizados com sucesso"
+}
+```
 
-  `PUT`
-  
-*  **Parâmetros de URL**
-
-   id
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
-  
-   `status=[string]`
-
-  **Opcional:**
- 
-   `idCart=[integer]`
-   `idProduct=[integer]`
-   `quantity=[integer]`
-   `noteProduct=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Dados do item do carrinho atualizados com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Dados do item do carrinho atualizados sem sucesso" }`
+404 Error
+```json
+{
+    "Dados do item do carrinho atualizados sem sucesso"
+}
+```
 </details>
 
 
-## Comentário acerca do Produto
+## Comentário do Produto
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um comentário acerca de um produto em formato JSON. </pre>
+  <pre> Criar um comentário acerca do produto.</pre>
+
+  **[POST]** `{{host}}/insertCommentProduct`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `nameClient`     | string  | Nome do Cliente do comentário.         |     Sim     |
+| `idProduct`     | integer  | ID do produto do comentário.         |     Sim     |
+| `image`     | string  |  Imagem do produto do comentário.         |     Não     |
+| `nStars`     | integer  | Número de estrelas do produto do comentário.       |     Não     |
+| `text`     | string  | Texto do comentário.       |     Não     |
 
-  /insertCommentProduct
+```json
+{
+    "nameClient": "Alice Dias",
+    "idProduct": 1,
+    "image": "https://th.bing.com/th/id/OIP.pM-lTcgk7puTjjkCun-KAAHaFj?w=236&h=180&c=7&r=0&o=5&pid=1.7",
+    "nStars": 5,
+    "text": "O Crispy Chicken estava delicioso!"
+}
+```
+**Response**
 
-* **Método:**
+201 Created
+```json
+{
+    "Comentário criado com sucesso"
+}
+```
 
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `nameClient=[string]`
-   `idProduct=[integer]`
-   
-   
-   **Opcional:**
- 
-   `image=[string]`
-   `nStars=[integer]`
-   `text=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Comentário criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Comentário criado sem sucesso" }`
+404 Error
+```json
+{
+    "Comentário criado sem sucesso"
+}
+```
 </details>
 
 
-## Comentário acerca do Trabalhador
+## Comentário do Trabalhador
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um comentário acerca de um trabalhador em formato JSON. </pre>
+  <pre> Criar um comentário acerca do trabalhador.</pre>
+
+  **[POST]** `{{host}}/insertCommentWorker`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `nameClient`     | string  | Nome do Cliente do comentário.         |     Sim     |
+| `idWorker`     | integer  | ID do trabalhador do comentário.         |     Sim     |
+| `image`     | string  |  Imagem do trabalhador do comentário.         |     Não     |
+| `nStars`     | integer  | Número de estrelas do trabalhador do comentário.       |     Não     |
+| `text`     | string  | Texto do comentário.       |     Não     |
 
-  /insertCommentWorker
+```json
+{
+    "nameClient": "Alice Dias",
+    "idWorker": 1,
+    "image": "https://th.bing.com/th/id/OIP.pM-lTcgk7puTjjkCun-KAAHaFj?w=236&h=180&c=7&r=0&o=5&pid=1.7",
+    "nStars": 5,
+    "text": "Um senhor 5 estrelas! Entregou o pedido rápido e de forma segura."
+}
+```
+**Response**
 
-* **Método:**
+201 Created
+```json
+{
+    "Comentário criado com sucesso"
+}
+```
 
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `nameClient=[string]`
-   `idWorker=[integer]`
-   
-   
-   **Opcional:**
- 
-   `image=[string]`
-   `nStars=[integer]`
-   `text=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Comentário criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Comentário criado sem sucesso" }`
+404 Error
+```json
+{
+    "Comentário criado sem sucesso"
+}
+```
 </details>
 
 
@@ -371,151 +352,141 @@
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um restaurante em formato JSON. </pre>
+  <pre> Criar um restaurante.</pre>
+
+  **[POST]** `{{host}}/insertRestaurant`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `name`     | string  | Nome do restaurante.         |     Sim     |
+| `address`     | string  | Morada do restaurante.       |     Sim     |
+| `image`     | string  | Imagem do restaurante.       |     Não     |
+| `nStars`     | integer  | Número de estrelas do restaurante.       |     Não     |
+| `allCategories`     | string  | As categorias dos produtos do restaurante.       |     Não     |
+| `cheapPriceProduct`     | integer  | ID do produto mais barato do restaurante.       |     Não     |
+| `distanceUserAddress`     | integer  | Distância do cliente até ao restaurante.       |     Não     |
+| `description`     | string  | Descrição do restaurante.       |     Não     |
 
-  /insertRestaurant
+```json
+{
+    "name": "Burger King",
+    "address": "Rua do Burger King, nº5 Portimão",
+    "image": "https://th.bing.com/th/id/OIP.tiIwgoPkXKdA_ehHFs12LQHaHh?w=164&h=180&c=7&r=0&o=5&pid=1.7",
+    "nStars": 5,
+    "allCategories": "Hamburger, Frango Frito, Batata Frita, Milkshake, Gelado, Waffle",
+    "cheapPriceProduct": 1,
+    "distanceUserAddress": 6,
+    "description": "Convide a sua família e venha conhecer o melhor restaurante de fast food do MUNDO!"
+}
+```
+**Response**
 
-* **Método:**
+201 Created
+```json
+{
+    "Restaurante criado com sucesso"
+}
+```
 
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `name=[string]`
-   `address=[string]`
-   
-   
-   **Opcional:**
- 
-   `image=[string]`
-   `nStars=[integer]`
-   `allCategories=[string]`
-   `cheapPriceProduct=[integer]`
-   `distanceUserAddress=[integer]`
-   `description=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Restaurante criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Restaurante criado sem sucesso" }`
+404 Error
+```json
+{
+    "Restaurante criado sem sucesso"
+}
+```
 </details>
-
-
 
 
 ## Utilizador
-    
+
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um utilizador em formato JSON. </pre>
+  <pre> Criar um utilizador.</pre>
+
+  **[POST]** `{{host}}/insertUser`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `name`     | string  | Nome do utilizador.         |     Sim     |
+| `role`     | string  | Tipo de utilizador.         |     Sim     |
+| `address`     | string  | Morada do utilizador.       |     Sim     |
+| `email`     | string  | Email do utilizador.       |     Sim     |
+| `password`     | string  | Palavra-passe do utilizador.       |     Sim     |
+| `paypal`     | string  | Paypal do utilizador.       |     Sim     |
+| `phoneNumber`     | string  | Número de telemóvel do utilizador.       |     Não     |
 
-  /insertUser
+```json
+{
+    "name": "Alice Dias",
+    "role": "customer",
+    "address": "Rua da minha casa nº75, Portimão",
+    "email": "alicedias@email.com",
+    "password": "**********",
+    "paypal": "alicedias26",
+    "phoneNumber": "+351911111111"
+}
+```
+**Response**
 
-* **Método:**
+201 Created
+```json
+{
+    "Utilizador criado com sucesso"
+}
+```
 
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `name=[string]`
-   `role=[string]`
-   `address=[string]`
-   `email=[string]`
-   `password=[string]`
-   `paypal=[string]`
-   
-   
-   **Opcional:**
- 
-   `phoneNumber=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Utilizador criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Utilizador criado sem sucesso" }`
+404 Error
+```json
+{
+    "Utilizador criado sem sucesso"
+}
+```
 </details>
 
 
-
 ## Log
-    
+
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de uma log em formato JSON. </pre>
+  <pre> Criar uma log.</pre>
+
+  **[POST]** `{{host}}/insertLog`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `dateTime`     | string  | Hora da log.         |     Sim     |
+| `idUser`     | integer  | ID do utilizador da log.         |     Sim     |
+| `type`     | string  | Tipo de log.         |     Sim     |
+| `titleLog`     | string  | Título da log.         |     Sim     |
+| `resume`     | string  | Resumo da log.       |     Não     |
 
-  /insertLog
+```json
+{
+    "name": "Alice Dias",
+    "role": "customer",
+    "address": "Rua da minha casa nº75, Portimão",
+    "email": "alicedias@email.com",
+    "password": "**********",
+    "paypal": "alicedias26",
+    "phoneNumber": "+351911111111"
+}
+```
+**Response**
 
-* **Método:**
+201 Created
+```json
+{
+    "Log criada com sucesso"
+}
+```
 
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `dateTime=[dateTime]`
-   `idUser=[integer]`
-   `type=[string]`
-   `titleLog=[string]`
-   
-   **Opcional:**
- 
-   `resume=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Log criada com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Log criada sem sucesso" }`
+404 Error
+```json
+{
+    "Log criada sem sucesso"
+}
+```
 </details>
