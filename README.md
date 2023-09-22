@@ -3,53 +3,52 @@
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um produto em formato JSON. </pre>
+  <pre> Criar um produto. </pre>
+
+  **[POST]** `{{host}}/insertProduct`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `name`     | string  | Nome do produto.         |     Sim     |  
+| `price` | double  | Preço do produto. |     Sim     |             
+| `category` | string  | Categoria do produto. |     Sim     |
+| `idRestaurant` | integer  | ID do Restaurante do produto. |     Sim     |
+| `description` | string  | Descrição do produto. |     Não     |
+| `image` | string  | Imagem do produto. |     Não     |
+| `nStars` | integer  | Número de estrelas do produto. |     Não     |
+| `allergens` | string  | Alergénicos do produto. |     Não     |
+| `mainIngredients` | string  | Ingredientes principais do produto. |     Não     |
+| `nutritionalValue` | string  | Valor nutricional do produto. |     Não     |
 
-  /insertProduct
+```json
+{
+    "name": "Crispy Chicken",
+    "price": 1.00,
+    "category": "Hamburger",
+    "idRestaurant": 1,
+    "description": "Crocante por fora, suave por dentro. O melhor frango com um panado crocante, tomate acabado de cortar, alface fresca e maionese num pão de sementes acabado de torrar. Uma verdadeira obra de arte.",
+    "image": "https://www.nit.pt/wp-content/uploads/2020/10/6f7b4074e48a10d14e8cd990c4b646e7-754x394.jpg",
+    "nStars": 5,
+    "allergens": "Glúten, Ovo, Aipo, Sésamo, Pode conter tremoços, Pode conter mostarda, Pode conter proteína de soja, Pode conter produtos lácteos, Pode conter SO2 e sulfitos",
+    "mainIngredients": "Alface, Tomate, Maionese",
+    "nutritionalValue": "Peso 189g, Calorias 516kcal, Proteínas 16.4g, Carboidratos 42.2g, Açúcar 6.3g, Açúcar adicionado 0.9g, Gorduras 30.5g, Gorduras monoinsaturadas 12g, Gorduras pollinsaturadas 13.3g, Gordura saturada 5.6g, Gordura trans hidrogenada 0g, Gordura trans natural 0.2g, Gordura trans 0.2g, Fibra 3.3g, Sódio 725mg, Sal 1812mg, Sal adicionado 1812mg"
+}
+```
+**Response**
 
-* **Método:**
-
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `name=[string]`
-   `price=[decimal]`
-   `category=[string]`
-   `idRestaurant=[integer]`
-   
-   
-   **Opcional:**
- 
-   `description=[string]`
-   `image=[string]`
-   `nStars=[integer]`
-   `allergens=[string]`
-   `mainIngredients=[string]`
-   `nutritionalValue=[string]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Produto criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Produto criado sem sucesso" }`
+201 Created
+```json
+{
+    "Produto criado com sucesso"
+}
+```
+404 Error
+```json
+{
+    "Produto criado sem sucesso"
+}
+```
 </details>
 
 
