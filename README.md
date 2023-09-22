@@ -131,50 +131,47 @@
 ```
 </details>
 
+
 <details>
   <summary>Editar</summary>
-  <pre> Edita dados de um carrinho em formato JSON. </pre>
+  <pre> Editar um carrinho. </pre>
+
+  **[PUT]** `{{host}}/editCart/{id}`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `status`     | string  | Estado do carrinho.         |     Sim     |
+| `subtotal`     | decimal  | Subtotal do carrinho.         |     Não     |  
+| `deliveryFee` | decimal  | Taxa de entrega do carrinho. |     Não     |             
+| `discount` | decimal  | Desconto do carrinho. |     Não     |   
+| `total` | decimal  | Total do carrinho. |     Não     |   
+| `idUser` | integer  | ID do utilizador do carrinho. |     Não     |   
 
-  /editCart/{id}
+```json
+{
+    "subtotal": 8.99,
+    "deliveryFee": 2.00,
+    "discount": 0.00,
+    "total": 10.99,
+    "idUser": 1
+}
+```
+**Response**
 
-* **Método:**
+200 Updated
+```json
+{
+    "Dados do carrinho atualizados com sucesso"
+}
+```
 
-  `PUT`
-  
-*  **Parâmetros de URL**
-
-   id
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
-  
-   `status=[string]`
-
-  **Opcional:**
- 
-   `subtotal=[decimal]`
-   `deliveryFee=[decimal]`
-   `discount=[decimal]`
-   `total=[decimal]`
-   `idUser=[integer]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Dados do carrinho atualizados com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Dados do carrinho atualizados sem sucesso" }`
+404 Error
+```json
+{
+    "Dados do carrinho atualizados sem sucesso"
+}
+```
 </details>
 
 
