@@ -93,44 +93,42 @@
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um carrinho em formato JSON. </pre>
+  <pre> Criar um carrinho. </pre>
+
+  **[POST]** `{{host}}/insertCart`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `subtotal`     | decimal  | Subtotal do carrinho.         |     Sim     |  
+| `deliveryFee` | decimal  | Taxa de entrega do carrinho. |     Sim     |             
+| `discount` | decimal  | Desconto do carrinho. |     Sim     |   
+| `total` | decimal  | Total do carrinho. |     Sim     |   
+| `idUser` | integer  | ID do utilizador do carrinho. |     Sim     |   
 
-  /insertCart
+```json
+{
+    "subtotal": 8.99,
+    "deliveryFee": 2.00,
+    "discount": 0.00,
+    "total": 10.99,
+    "idUser": 1
+}
+```
+**Response**
 
-* **Método:**
-
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `subtotal=[decimal]`
-   `deliveryFee=[decimal]`
-   `discount=[decimal]`
-   `total=[decimal]`
-   `idUser=[integer]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Carrinho criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Carrinho criado sem sucesso" }`
+201 Created
+```json
+{
+    "Carrinho criado com sucesso"
+}
+```
+404 Error
+```json
+{
+    "Carrinho criado sem sucesso"
+}
+```
 </details>
 
 <details>
