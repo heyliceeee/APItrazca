@@ -19,7 +19,7 @@
 | `nStars` | integer  | Número de estrelas do produto. |     Não     |
 | `allergens` | string  | Alergénicos do produto. |     Não     |
 | `mainIngredients` | string  | Ingredientes principais do produto. |     Não     |
-| `nutritionalValue` | string  | Valor nutricional do produto. |     Não     |
+| `nutritionalValue` | string  | Valores nutricionais do produto. |     Não     |
 
 ```json
 {
@@ -56,41 +56,36 @@
 
 <details>
   <summary>Criar</summary>
-  <pre> Insere dados de um pedido em formato JSON. </pre>
+  <pre> Criar um pedido. </pre>
+
+  **[POST]** `{{host}}/insertOrder`
   
-* **URL**
+**Body**
+| Campo      | Tipo | Descrição                           | Obrigatório |
+|:---------------|:----:|:------------------------------------|:-----------:|
+| `timeUserAddress`     | datetime  | Horário estimado de chegada.         |     Sim     |  
+| `idCart` | integer  | ID do carrinho. |     Sim     |             
 
-  /insertOrder
+```json
+{
+    "timeUserAddress": "06/10/23 15:24",
+    "idCart": 1
+}
+```
+**Response**
 
-* **Método:**
-
-  `POST`
-  
-*  **Parâmetros de URL**
-
-   Nenhum
-
-* **Parâmetros de dados**
-
-  **Obrigatório:**
- 
-   `timeUserAddress=[datetime]`
-   `idCart=[integer]`
-
-* **Resposta de sucesso:**
-
-  * **StatusCode:** 200 <br />
-    **Message:** `{ "Pedido criado com sucesso" }`
- 
-* **Resposta de erro:**
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ motivo do erro }`
-
-  OU
-
-  * **StatusCode:** 404 <br />
-    **Message:** `{ "Pedido criado sem sucesso" }`
+201 Created
+```json
+{
+    "Pedido criado com sucesso"
+}
+```
+404 Error
+```json
+{
+    "Pedido criado sem sucesso"
+}
+```
 </details>
 
 
