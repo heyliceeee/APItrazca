@@ -1,25 +1,25 @@
-# API da app "Traz Cá"
-## Produto
+# "Traz Cá" app API
+## Product
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um produto. </pre>
+  <summary>Create</summary>
+  <pre> Create a product. </pre>
 
   **[POST]** `{{host}}/insertProduct`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `name`     | string  | Nome do produto.         |     Sim     |  
-| `price` | double  | Preço do produto. |     Sim     |             
-| `category` | string  | Categoria do produto. |     Sim     |
-| `idRestaurant` | integer  | ID do Restaurante do produto. |     Sim     |
-| `description` | string  | Descrição do produto. |     Não     |
-| `image` | string  | Imagem do produto. |     Não     |
-| `nStars` | integer  | Número de estrelas do produto. |     Não     |
-| `allergens` | string  | Alergénicos do produto. |     Não     |
-| `mainIngredients` | string  | Ingredientes principais do produto. |     Não     |
-| `nutritionalValue` | string  | Valores nutricionais do produto. |     Não     |
+| `name`     | string  | Product's name.         |     Yes     |  
+| `price` | double  | Price of the product. |     Yes     |             
+| `category` | string  | Product category. |     Yes     |
+| `idRestaurant` | integer  | Product restaurant ID. |     Yes     |
+| `description` | string  | Product Description. |     No     |
+| `image` | string  | Product image. |     No     |
+| `nStars` | integer  | Number of stars for the product. |     No     |
+| `allergens` | string  | Product allergens. |     No     |
+| `mainIngredients` | string  | Main ingredients of the product. |     No     |
+| `nutritionalValue` | string  | Nutritional values of the product. |     No     |
 
 ```json
 {
@@ -27,12 +27,12 @@
     "price": 1.00,
     "category": "Hamburger",
     "idRestaurant": 1,
-    "description": "Crocante por fora, suave por dentro. O melhor frango com um panado crocante, tomate acabado de cortar, alface fresca e maionese num pão de sementes acabado de torrar. Uma verdadeira obra de arte.",
+    "description": "Crispy on the outside, soft on the inside. The best chicken with a crispy breading, freshly cut tomato, fresh lettuce and mayonnaise on a freshly toasted seed bread. A true work of art.",
     "image": "https://www.nit.pt/wp-content/uploads/2020/10/6f7b4074e48a10d14e8cd990c4b646e7-754x394.jpg",
     "nStars": 5,
-    "allergens": "Glúten, Ovo, Aipo, Sésamo, Pode conter tremoços, Pode conter mostarda, Pode conter proteína de soja, Pode conter produtos lácteos, Pode conter SO2 e sulfitos",
-    "mainIngredients": "Alface, Tomate, Maionese",
-    "nutritionalValue": "Peso 189g, Calorias 516kcal, Proteínas 16.4g, Carboidratos 42.2g, Açúcar 6.3g, Açúcar adicionado 0.9g, Gorduras 30.5g, Gorduras monoinsaturadas 12g, Gorduras pollinsaturadas 13.3g, Gordura saturada 5.6g, Gordura trans hidrogenada 0g, Gordura trans natural 0.2g, Gordura trans 0.2g, Fibra 3.3g, Sódio 725mg, Sal 1812mg, Sal adicionado 1812mg"
+    "allergens": "Gluten, Egg, Celery, Sesame, May contain lupins, May contain mustard, May contain soy protein, May contain dairy products, May contain SO2 and sulfites",
+    "mainIngredients": "Lettuce, Tomato, Mayonnaise",
+    "nutritionalValue": "Weight 189g, Calories 516kcal, Proteins 16.4g, Carbohydrates 42.2g, Sugar 6.3g, Added sugar 0.9g, Fats 30.5g, Monounsaturated fats 12g, Pollinsaturated fats 13.3g, Saturated fat 5.6g, Hydrogenated trans fat 0g, Natural trans fat 0.2 g, Trans fat 0.2g, Fiber 3.3g, Sodium 725mg, Salt 1812mg, Added salt 1812mg"
 }
 ```
 **Response**
@@ -40,31 +40,31 @@
 201 Created
 ```json
 {
-    "Produto criado com sucesso"
+    "Product successfully created"
 }
 ```
 404 Error
 ```json
 {
-    "Produto criado sem sucesso"
+    "Product created unsuccessfully"
 }
 ```
 </details>
 
 
-## Pedido
+## Order
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um pedido. </pre>
+  <summary>Create</summary>
+  <pre> Create an order. </pre>
 
   **[POST]** `{{host}}/insertOrder`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `timeUserAddress`     | datetime  | Horário estimado de chegada.         |     Sim     |  
-| `idCart` | integer  | ID do carrinho. |     Sim     |             
+| `timeUserAddress`     | datetime  | Estimated arrival time.        |     Yes     |  
+| `idCart` | integer  | Cart ID. |     Yes     |             
 
 ```json
 {
@@ -77,34 +77,34 @@
 201 Created
 ```json
 {
-    "Pedido criado com sucesso"
+    "Order successfully created"
 }
 ```
 404 Error
 ```json
 {
-    "Pedido criado sem sucesso"
+    "Order created unsuccessfully"
 }
 ```
 </details>
 
 
-## Carrinho
+## Cart
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um carrinho. </pre>
+  <summary>Create</summary>
+  <pre> Create a cart. </pre>
 
   **[POST]** `{{host}}/insertCart`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `subtotal`     | decimal  | Subtotal do carrinho.         |     Sim     |  
-| `deliveryFee` | decimal  | Taxa de entrega do carrinho. |     Sim     |             
-| `discount` | decimal  | Desconto do carrinho. |     Sim     |   
-| `total` | decimal  | Total do carrinho. |     Sim     |   
-| `idUser` | integer  | ID do utilizador do carrinho. |     Sim     |   
+| `subtotal`     | decimal  | Cart subtotal.         |     Yes     |  
+| `deliveryFee` | decimal  | Cart delivery fee. |     Yes     |             
+| `discount` | decimal  | Cart discount. |     Yes     |   
+| `total` | decimal  | Cart total. |     Yes     |   
+| `idUser` | integer  | Cart user ID. |     Yes     |   
 
 ```json
 {
@@ -120,33 +120,33 @@
 201 Created
 ```json
 {
-    "Carrinho criado com sucesso"
+    "Cart successfully created"
 }
 ```
 404 Error
 ```json
 {
-    "Carrinho criado sem sucesso"
+    "Cart created unsuccessfully"
 }
 ```
 </details>
 
 
 <details>
-  <summary>Editar</summary>
-  <pre> Editar um carrinho. </pre>
+  <summary>Edit</summary>
+  <pre> Edit a cart. </pre>
 
   **[PUT]** `{{host}}/editCart/{id}`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `status`     | string  | Estado do carrinho.         |     Sim     |
-| `subtotal`     | decimal  | Subtotal do carrinho.         |     Não     |  
-| `deliveryFee` | decimal  | Taxa de entrega do carrinho. |     Não     |             
-| `discount` | decimal  | Desconto do carrinho. |     Não     |   
-| `total` | decimal  | Total do carrinho. |     Não     |   
-| `idUser` | integer  | ID do utilizador do carrinho. |     Não     |   
+| `status`     | string  | Cart status.         |     Yes     |
+| `subtotal`     | decimal  | Cart subtotal.         |     No     |  
+| `deliveryFee` | decimal  | Cart delivery fee. |     No     |             
+| `discount` | decimal  | Cart discount. |     No     |   
+| `total` | decimal  | Cart total. |     No     |   
+| `idUser` | integer  | Cart user ID. |     No     |   
 
 ```json
 {
@@ -163,41 +163,41 @@
 200 Updated
 ```json
 {
-    "Dados do carrinho atualizados com sucesso"
+    "Cart details updated successfully"
 }
 ```
 
 404 Error
 ```json
 {
-    "Dados do carrinho atualizados sem sucesso"
+    "Cart details updated unsuccessfully"
 }
 ```
 </details>
 
 
-## Item do Carrinho
+## Cart Item
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um item no carrinho. </pre>
+  <summary>Create</summary>
+  <pre> Create an item in the cart. </pre>
 
   **[POST]** `{{host}}/insertCartItem`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `quantity`     | integer  | Quantidade do item.         |     Sim     |
-| `idProduct`     | integer  | ID do produto do item.         |     Sim     |
-| `idCart`     | integer  | ID do carrinho do item.         |     Sim     |
-| `noteProduct`     | string  | Nota do produto do item.       |     Não     |
+| `quantity`     | integer  | Item quantity.         |     Yes     |
+| `idProduct`     | integer  | Product ID of the item.         |     Yes     |
+| `idCart`     | integer  | Item cart ID.       |     Yes     |
+| `noteProduct`     | string  | Item Product Note.       |     No     |
 
 ```json
 {
     "quantity": 2,
     "idProduct": 1,
     "idCart": 1,
-    "noteProduct": "Extra queijo e sem alface"
+    "noteProduct": "Extra cheese and no lettuce"
 }
 ```
 **Response**
@@ -205,33 +205,33 @@
 201 Created
 ```json
 {
-    "Item do carrinho criado com sucesso"
+    "Cart item created successfully"
 }
 ```
 
 404 Error
 ```json
 {
-    "Item do carrinho criado sem sucesso"
+    "Cart Item created unsuccessfully"
 }
 ```
 </details>
 
 
 <details>
-  <summary>Editar</summary>
-  <pre> Editar um item no carrinho. </pre>
+  <summary>Edit</summary>
+  <pre> Edit an item in the cart. </pre>
 
   **[PUT]** `{{host}}/editCartItem/{id}`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `status`     | string  | Estado do item.         |     Sim     |
-| `quantity`     | integer  | Quantidade do item.         |     Não     |
-| `idProduct`     | integer  | ID do produto do item.         |     Não     |
-| `idCart`     | integer  | ID do carrinho do item.         |     Não     |
-| `noteProduct`     | string  | Nota do produto do item.       |     Não     |
+| `status`     | string  | Item status.         |     Yes     |
+| `quantity`     | integer  | Item quantity.         |     No     |
+| `idProduct`     | integer  | Product ID of the item.         |     No     |
+| `idCart`     | integer  | Item cart ID.         |     No     |
+| `noteProduct`     | string  | Item product note.       |     No     |
 
 ```json
 {
@@ -239,7 +239,7 @@
     "quantity": 2,
     "idProduct": 1,
     "idCart": 1,
-    "noteProduct": "Extra queijo e sem alface"
+    "noteProduct": "Extra cheese and no lettuce"
 }
 ```
 **Response**
@@ -247,35 +247,35 @@
 200 Updated
 ```json
 {
-    "Dados do item do carrinho atualizados com sucesso"
+    "Cart item data updated successfully"
 }
 ```
 
 404 Error
 ```json
 {
-    "Dados do item do carrinho atualizados sem sucesso"
+    "Cart item data updated unsuccessfully"
 }
 ```
 </details>
 
 
-## Comentário do Produto
+## Product Comment
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um comentário acerca do produto.</pre>
+  <summary>Create</summary>
+  <pre> Create a review about the product.</pre>
 
   **[POST]** `{{host}}/insertCommentProduct`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `nameClient`     | string  | Nome do Cliente do comentário.         |     Sim     |
-| `idProduct`     | integer  | ID do produto do comentário.         |     Sim     |
-| `image`     | string  |  Imagem do produto do comentário.         |     Não     |
-| `nStars`     | integer  | Número de estrelas do produto do comentário.       |     Não     |
-| `text`     | string  | Texto do comentário.       |     Não     |
+| `nameClient`     | string  | Customer name of the comment.         |     Yes     |
+| `idProduct`     | integer  | Product ID of the comment.         |     Yes     |
+| `image`     | string  |  Product image from the comment.      |     No     |
+| `nStars`     | integer  | Number of stars for the product in the review.       |     No     |
+| `text`     | string  | Comment text.       |     No     |
 
 ```json
 {
@@ -283,7 +283,7 @@
     "idProduct": 1,
     "image": "https://th.bing.com/th/id/OIP.pM-lTcgk7puTjjkCun-KAAHaFj?w=236&h=180&c=7&r=0&o=5&pid=1.7",
     "nStars": 5,
-    "text": "O Crispy Chicken estava delicioso!"
+    "text": "The Crispy Chicken was delicious!"
 }
 ```
 **Response**
@@ -291,35 +291,34 @@
 201 Created
 ```json
 {
-    "Comentário criado com sucesso"
+    "Comment successfully created"
 }
 ```
 
 404 Error
 ```json
 {
-    "Comentário criado sem sucesso"
+    "Comment created unsuccessfully"
 }
 ```
 </details>
 
 
-## Comentário do Trabalhador
-
+## Worker Comment
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um comentário acerca do trabalhador.</pre>
+  <summary>Create</summary>
+  <pre> Create a comment about the worker. </pre>
 
   **[POST]** `{{host}}/insertCommentWorker`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `nameClient`     | string  | Nome do Cliente do comentário.         |     Sim     |
-| `idWorker`     | integer  | ID do trabalhador do comentário.         |     Sim     |
-| `image`     | string  |  Imagem do trabalhador do comentário.         |     Não     |
-| `nStars`     | integer  | Número de estrelas do trabalhador do comentário.       |     Não     |
-| `text`     | string  | Texto do comentário.       |     Não     |
+| `nameClient`     | string  | Customer name of the comment.         |     Yes     |
+| `idWorker`     | integer  | Comment worker ID.         |     Yes     |
+| `image`     | string  |  Image of comment worker.         |     No     |
+| `nStars`     | integer  | Number of stars of the comment worker.       |     No     |
+| `text`     | string  | Comment text.       |     No     |
 
 ```json
 {
@@ -327,7 +326,7 @@
     "idWorker": 1,
     "image": "https://th.bing.com/th/id/OIP.pM-lTcgk7puTjjkCun-KAAHaFj?w=236&h=180&c=7&r=0&o=5&pid=1.7",
     "nStars": 5,
-    "text": "Um senhor 5 estrelas! Entregou o pedido rápido e de forma segura."
+    "text": "A 5 star gentleman! Delivered the order quickly and safely."
 }
 ```
 **Response**
@@ -335,49 +334,49 @@
 201 Created
 ```json
 {
-    "Comentário criado com sucesso"
+    "Comment successfully created"
 }
 ```
 
 404 Error
 ```json
 {
-    "Comentário criado sem sucesso"
+    "Comment created unsuccessfully"
 }
 ```
 </details>
 
 
-## Restaurante
+## Restaurant
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um restaurante.</pre>
+  <summary>Create</summary>
+  <pre> Create a restaurant</pre>
 
   **[POST]** `{{host}}/insertRestaurant`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `name`     | string  | Nome do restaurante.         |     Sim     |
-| `address`     | string  | Morada do restaurante.       |     Sim     |
-| `image`     | string  | Imagem do restaurante.       |     Não     |
-| `nStars`     | integer  | Número de estrelas do restaurante.       |     Não     |
-| `allCategories`     | string  | As categorias dos produtos do restaurante.       |     Não     |
-| `cheapPriceProduct`     | integer  | ID do produto mais barato do restaurante.       |     Não     |
-| `distanceUserAddress`     | integer  | Distância do cliente até ao restaurante.       |     Não     |
-| `description`     | string  | Descrição do restaurante.       |     Não     |
+| `name`     | string  | Name of the restaurant.         |     Yes     |
+| `address`     | string  | Restaurant address.       |     Yes     |
+| `image`     | string  | Image of the restaurant.       |     No     |
+| `nStars`     | integer  | Number of restaurant stars.       |     No     |
+| `allCategories`     | string  | The restaurant's product categories.       |     No     |
+| `cheapPriceProduct`     | integer  | ID of the cheapest product in the restaurant.       |     No     |
+| `distanceUserAddress`     | integer  | Distance from the customer to the restaurant.       |     No     |
+| `description`     | string  | Description of the restaurant.       |     No     |
 
 ```json
 {
     "name": "Burger King",
-    "address": "Rua do Burger King, nº5 Portimão",
+    "address": "123 Main Street East Unit 6",
     "image": "https://th.bing.com/th/id/OIP.tiIwgoPkXKdA_ehHFs12LQHaHh?w=164&h=180&c=7&r=0&o=5&pid=1.7",
     "nStars": 5,
-    "allCategories": "Hamburger, Frango Frito, Batata Frita, Milkshake, Gelado, Waffle",
+    "allCategories": "Hamburger, Fried Chicken, French Fries, Milkshake, Ice Cream, Waffle",
     "cheapPriceProduct": 1,
     "distanceUserAddress": 6,
-    "description": "Convide a sua família e venha conhecer o melhor restaurante de fast food do MUNDO!"
+    "description": "Invite your family and come and discover the best fast food restaurant in the WORLD!"
 }
 ```
 **Response**
@@ -385,43 +384,43 @@
 201 Created
 ```json
 {
-    "Restaurante criado com sucesso"
+    "Restaurant successfully created"
 }
 ```
 
 404 Error
 ```json
 {
-    "Restaurante criado sem sucesso"
+    "Restaurant created unsuccessfully"
 }
 ```
 </details>
 
 
-## Utilizador
+## User
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar um utilizador.</pre>
+  <summary>Create</summary>
+  <pre> Create a user.</pre>
 
   **[POST]** `{{host}}/insertUser`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `name`     | string  | Nome do utilizador.         |     Sim     |
-| `role`     | string  | Tipo de utilizador.         |     Sim     |
-| `address`     | string  | Morada do utilizador.       |     Sim     |
-| `email`     | string  | Email do utilizador.       |     Sim     |
-| `password`     | string  | Palavra-passe do utilizador.       |     Sim     |
-| `paypal`     | string  | Paypal do utilizador.       |     Sim     |
-| `phoneNumber`     | string  | Número de telemóvel do utilizador.       |     Não     |
+| `name`     | string  | User name.         |     Yes     |
+| `role`     | string  | User type.         |     Yes     |
+| `address`     | string  | User address.       |     Yes     |
+| `email`     | string  | User email.       |     Yes     |
+| `password`     | string  | User password.       |     Yes     |
+| `paypal`     | string  | User Paypal.       |     Yes     |
+| `phoneNumber`     | string  | User's mobile phone number.       |     No     |
 
 ```json
 {
     "name": "Alice Dias",
     "role": "customer",
-    "address": "Rua da minha casa nº75, Portimão",
+    "address": "465 Main Street East Unit 9",
     "email": "alicedias@email.com",
     "password": "**********",
     "paypal": "alicedias26",
@@ -433,14 +432,14 @@
 201 Created
 ```json
 {
-    "Utilizador criado com sucesso"
+    "User successfully created"
 }
 ```
 
 404 Error
 ```json
 {
-    "Utilizador criado sem sucesso"
+    "User created unsuccessfully"
 }
 ```
 </details>
@@ -449,25 +448,25 @@
 ## Log
 
 <details>
-  <summary>Criar</summary>
-  <pre> Criar uma log.</pre>
+  <summary>Create</summary>
+  <pre> Create a log.</pre>
 
   **[POST]** `{{host}}/insertLog`
   
 **Body**
-| Campo      | Tipo | Descrição                           | Obrigatório |
+| Field      | Type | Description                           | Mandatory |
 |:---------------|:----:|:------------------------------------|:-----------:|
-| `dateTime`     | string  | Hora da log.         |     Sim     |
-| `idUser`     | integer  | ID do utilizador da log.         |     Sim     |
-| `type`     | string  | Tipo de log.         |     Sim     |
-| `titleLog`     | string  | Título da log.         |     Sim     |
-| `resume`     | string  | Resumo da log.       |     Não     |
+| `dateTime`     | string  | Log time.         |     Yes     |
+| `idUser`     | integer  | Log user ID.        |     Yes     |
+| `type`     | string  | Log type.        |     Yes     |
+| `titleLog`     | string  | Log title.         |     Yes     |
+| `resume`     | string  | Log summary.       |     No     |
 
 ```json
 {
     "name": "Alice Dias",
     "role": "customer",
-    "address": "Rua da minha casa nº75, Portimão",
+    "address": "465 Main Street East Unit 9",
     "email": "alicedias@email.com",
     "password": "**********",
     "paypal": "alicedias26",
@@ -479,14 +478,14 @@
 201 Created
 ```json
 {
-    "Log criada com sucesso"
+    "Log created successfully"
 }
 ```
 
 404 Error
 ```json
 {
-    "Log criada sem sucesso"
+    "Log created unsuccessfully"
 }
 ```
 </details>
